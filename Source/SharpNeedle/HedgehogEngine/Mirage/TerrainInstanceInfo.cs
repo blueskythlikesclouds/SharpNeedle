@@ -8,7 +8,7 @@ public class TerrainInstanceInfo : SampleChunkResource
 
     public TerrainModel Model { get; set; }
     public Matrix4x4 Transform { get; set; }
-    public List<LightIndexMeshGroup> LightGroups { get; set; }
+    public List<LightIndexMeshGroup> LightGroups { get; set; } = new();
 
     public string ModelName
     {

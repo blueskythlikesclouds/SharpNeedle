@@ -8,7 +8,7 @@ public class ArchiveList : ResourceBase, IDirectory, IStreamable
     public const string ResourceId = "hh/archive-list";
     public static uint Signature { get; } = BinaryHelper.MakeSignature<uint>("ARL2");
 
-    public long MaxSplitSize { get; set; } = 1024 * 1024 * 1024;
+    public long MaxSplitSize { get; set; } = 10 * 1024 * 1024;
     public IDirectory Parent { get; private set; }
     public bool DependsResolved { get; private set; }
     public List<Archive> Archives { get; private set; }
@@ -53,10 +53,10 @@ public class ArchiveList : ResourceBase, IDirectory, IStreamable
     {
         if (Archives == null)
         {
-            Archives = new List<Archive>
-            {
-                new ()
-            };
+	        Archives = new List<Archive>
+	        {
+		        new() { DataAlignment = 64 }
+	        };
 
             return Archives.First().Add(file);
         }
